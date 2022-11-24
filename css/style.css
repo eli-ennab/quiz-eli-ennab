@@ -1,4 +1,4 @@
-.btn-start {
+#button_start {
     width: 150px;
     margin: 20px;
 }
@@ -6,6 +6,22 @@
 .mx-auto {
     padding-top: 100px;
     width: 80vw;
+}
+
+#option_1,
+#option_2,
+#option_3,
+#option_4 {
+    width: 150px;
+    height: 80px;
+    margin: 10px;
+}
+
+#button_submit_answer,
+#button_reset_game {
+    width: 150px;
+    height: 80px;
+    margin: 10px;
 }
 
 /* // Small devices (landscape phones, 576px and up)

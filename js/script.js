@@ -1,0 +1,1 @@
+const students_images = document.querySelector('#student_image');
