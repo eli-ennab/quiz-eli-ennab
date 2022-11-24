@@ -1,4 +1,4 @@
-#button_start {
+#buttonStart {
     width: 150px;
     margin: 20px;
 }
@@ -8,17 +8,17 @@
     width: 80vw;
 }
 
-#option_1,
-#option_2,
-#option_3,
-#option_4 {
+#option1,
+#option2,
+#option3,
+#option4 {
     width: 150px;
     height: 80px;
     margin: 10px;
 }
 
-#button_submit_answer,
-#button_reset_game {
+#buttonSubmitAnswer,
+#buttonResetGame {
     width: 150px;
     height: 80px;
     margin: 10px;
