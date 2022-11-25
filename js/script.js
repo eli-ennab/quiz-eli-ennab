@@ -21,7 +21,23 @@ console.log(randomStudent.image);
 const image = document.querySelector('#studentImage');
 image.src = `${randomStudent.image}`;
 
-// // Printing all images
-// const image = document.querySelector('#studentImage');
-// image.src = `${studentImage.image}`;
+// Fisher-Yates Shuffle
+const shuffleStudentNames = (array) => {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		const temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+}
+
+shuffleStudentNames(students);
+console.log("Shuffled students:", students);
+console.log(students.slice(0, 10));
+console.log(students.slice(0, 20));
+
+const studentNames = students.map(student => student.name);
+console.log("Random ten students names:", studentNames.slice(0, 10));
+console.log("Random twenty students names:", studentNames.slice(0, 20));
+
 
