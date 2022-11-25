@@ -1,0 +1,35 @@
+/*-------------------------------------------*\
+   _config.scss
+ 
+   Index
+   - Google fonts
+   - Font Variables
+   - Colors
+   - Media queries
+\*-------------------------------------------*/
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Monofett&display=swap');
+
+// Font Variables
+$monofett-cursive: 'Monofett', cursive;
+
+// Colors
+$primary-color: white;
+$secondary-color: rgb(40, 39, 39);
+
+// Media Queries
+@mixin respond($breakpoint) {
+  @if $breakpoint == largest {
+    @media (min-width: 1300px) { @content };
+  }
+  @if $breakpoint == large {
+    @media (min-width: 1023px) { @content };
+  }
+  @if $breakpoint == medium {
+    @media (min-width: 767px) { @content };
+  }
+  @if $breakpoint == small {
+    @media (min-width: 479px) { @content };
+  }
+}

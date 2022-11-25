@@ -1,0 +1,48 @@
+/*-------------------------------------------*\
+   _main.scss
+ 
+   Index
+
+\*-------------------------------------------*/
+
+h1 {
+    font-size: 1rem;
+}
+
+.mx-auto {
+    padding-top: 100px;
+    width: 80vw;
+}
+
+.studentName {
+    padding: 2px;
+    color: $primary-color;
+    font-size: .9rem;
+}
+
+#option1,
+#option2,
+#option3,
+#option4 {
+    background-color: $secondary-color;
+    border: 1px solid $primary-color;
+    width: 150px;
+    height: 60px;
+    margin: 2px;
+}
+
+#buttonSubmitAnswer,
+#buttonResetGame {
+    width: 150px;
+    height: 60px;
+    margin: 20px 2px;
+    color: white;
+    font-size: 1rem;
+}
+
+#studentImage {
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+    border: 2px solid white;
+}
