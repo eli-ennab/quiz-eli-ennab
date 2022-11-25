@@ -27,7 +27,7 @@ const randomStudentName = students.find(student => students);
 console.log(randomStudentName.name);
 // And into DOM
 const name = document.querySelector('#option1');
-name.innerHTML = `<p>${randomStudentName.name}</p>`;
+name.innerHTML = `<p class="studentName">${randomStudentName.name}</p>`;
 
 // Random students name's image
 const randomStudentImage = students.find(student => students);
