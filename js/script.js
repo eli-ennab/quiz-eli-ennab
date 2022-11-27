@@ -36,31 +36,48 @@ console.log(randomCorrectStudentName.name);
 
 
 const trueStudent = document.querySelector('#option1');				// And into DOM
-trueStudent.innerHTML = `<p class="studentName1">${randomCorrectStudentName.name}</p>`;
+trueStudent.textContent = `${randomCorrectStudentName.name}`;
+trueStudent.value = true;
 
 // False student 1
 shuffleRandomStudent(students);
 let randomFalseStudentName = students.find(student => student);
 console.log(randomFalseStudentName.name);
 let falseStudent = document.querySelector('#option2');
-falseStudent.innerHTML = `<p class="studentName2">${randomFalseStudentName.name}</p>`;
+falseStudent.textContent = `${randomFalseStudentName.name}`;
+falseStudent.value = false;
 // False student 2
 shuffleRandomStudent(students);
 randomFalseStudentName = students.find(student => student);
 console.log(randomFalseStudentName.name);
 falseStudent = document.querySelector('#option3');
-falseStudent.innerHTML = `<p class="studentName3">${randomFalseStudentName.name}</p>`;
+falseStudent.textContent = `${randomFalseStudentName.name}`;
+falseStudent.value = false;
 // False student 3
 shuffleRandomStudent(students);
 randomFalseStudentName = students.find(student => student);
 console.log(randomFalseStudentName.name);
 falseStudent = document.querySelector('#option4');
-falseStudent.innerHTML = `<p class="studentName4">${randomFalseStudentName.name}</p>`;
+falseStudent.textContent = `${randomFalseStudentName.name}`;
+students.value = false;
+
+// falseStudent.value = randomFalseStudentName.id;		// Finding id
+// falseStudent.name = randomFalseStudentName.name;		// Finding name
 
 gameOptions.addEventListener('click', e => {
 	e.preventDefault();
 	console.log('You clicked the options.', e.target);
+
+	// if (value === true) {
+	// 	console.log('Nice');
+	// } else {
+	// 	console.log('Wrong');
+	// };
 });
+
+// gameOptions.addEventListener('click', function handleClick() {
+// 	gameOptions.textContent = 'Button-group clicked';
+//   });
 
 navigationButtons.addEventListener('click', e => {
 	e.preventDefault();
