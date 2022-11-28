@@ -15,12 +15,12 @@ const gameOptions = document.querySelector('#gameOptions');
 // startGame.addEventListener(e)
 // Get random true student
 
-const shuffleRandomStudent = (array) => {
-	for (let i = array.length - 1; i > 0; i--) {
+const shuffleRandomStudent = (students) => {
+	for (let i = students.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
-		const temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
+		const temp = students[i];
+		students[i] = students[j];
+		students[j] = temp;
 	}
 }
 
@@ -59,32 +59,44 @@ randomFalseStudentName = students.find(student => student);
 console.log(randomFalseStudentName.name);
 falseStudent = document.querySelector('#option4');
 falseStudent.textContent = `${randomFalseStudentName.name}`;
-students.value = false;
+falseStudent.value = false;
 
 // falseStudent.value = randomFalseStudentName.id;		// Finding id
 // falseStudent.name = randomFalseStudentName.name;		// Finding name
 
+// // Getting 10, 20 or all students
+// console.log(students.slice(0, 10));						// 10 random students
+// console.log(students.slice(0, 20));						// 20 random students
+// console.log(students);									// ALL students
+
 gameOptions.addEventListener('click', e => {
 	e.preventDefault();
-	console.log('You clicked the options.', e.target);
+	// console.log('You clicked the options.', e.target);
 
-	// if (value === true) {
-	// 	console.log('Nice');
-	// } else {
-	// 	console.log('Wrong');
-	// };
+	if (e.target === trueStudent) {
+		console.log('Correct');
+	} else {
+		console.log('Wrong');
+	}; 
 });
-
-// gameOptions.addEventListener('click', function handleClick() {
-// 	gameOptions.textContent = 'Button-group clicked';
-//   });
 
 navigationButtons.addEventListener('click', e => {
 	e.preventDefault();
-	console.log('You clicked the navigation buttons.', e.target);
+	if (e.target === btnSubmitAnswer) {
+		console.log('Submit answer');
+	} else {
+		console.log('New game');
+	};
 });
 
 nbrOfGames.addEventListener('click', e => {
 	e.preventDefault();
-	console.log('You clicked the number of games-buttons.', e.target);
+
+	if (e.target === btn10) {
+		console.log(students.slice(0, 10));						// 10 random students
+	} else if (e.target === btn20) {
+		console.log(students.slice(0, 20));						// 20 random students	
+	} else {
+		console.log(students);						// 20 random students	
+	};
 });
