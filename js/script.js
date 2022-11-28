@@ -1,4 +1,5 @@
 const gameOptions = document.querySelector('#gameOptions');
+const turnout = document.querySelector('#turnout');
 
 // // Get the random 3 false names
 
@@ -29,24 +30,53 @@ shuffleRandomStudent(students);
 let trueStudent;
 let falseStudent;
 
+
+// A function that gives the new true student (name and image)
 function newTrueStudent() {
 	const randomStudentImage = students.find(student => student);   	// Random students name's image
-	console.log(randomStudentImage.image);
 	const image = document.querySelector('#studentImage');          	// Random student into DOM
 	image.src = `${randomStudentImage.image}`;
 
 	const randomCorrectStudentName = students.find(student => student);	// Random true students name
-	console.log(randomCorrectStudentName.name);
 
 	trueStudent = document.querySelector('#option1');				// And into DOM
 	trueStudent.textContent = `${randomCorrectStudentName.name}`;
+
+	// Change value to true for true student
 	trueStudent.value = true;
 };
 
 newTrueStudent();
 
+// A function that gives three new false student (names)
+
+function newFalseStudents() {
+	// False student 1
+	shuffleRandomStudent(students);
+	let randomFalseStudentName = students.find(student => student);
+	falseStudent = document.querySelector('#option2');
+	falseStudent.textContent = `${randomFalseStudentName.name}`;
+
+	// False student 2
+	shuffleRandomStudent(students);
+	randomFalseStudentName = students.find(student => student);
+	falseStudent = document.querySelector('#option3');
+	falseStudent.textContent = `${randomFalseStudentName.name}`;
+	// False student 3
+	shuffleRandomStudent(students);
+	randomFalseStudentName = students.find(student => student);
+	falseStudent = document.querySelector('#option4');
+	falseStudent.textContent = `${randomFalseStudentName.name}`;
+
+	// Change value to false for all false students
+	falseStudent.value = false;
+};
+
+newFalseStudents();
+
 // let correctGuesses = 0;
 // let falseGuesses = 0;
+let guesses = 0;
 
 navigationButtons.addEventListener('click', e => {
 		e.preventDefault();
@@ -54,36 +84,21 @@ navigationButtons.addEventListener('click', e => {
 		if (e.target === btnSubmitAnswer) {
 			shuffleRandomStudent(students);
 			newTrueStudent();
+			newFalseStudents();
+			guesses++;
+			console.log(`Number of guesses: ${guesses}.`);
 			// correctGuesses++;
 			// console.log(`${correctGuesses} correct guesses.`);
 		} else {
 			alert('You gave up!');
+			guesses = 0;
+			newTrueStudent();
+			newFalseStudents();
+			turnout.innerHTML = ``;
 			// falseGuesses++;
 			// console.log(`${falseGuesses} false guesses.`);
 		};
-	});
-
-// False student 1
-shuffleRandomStudent(students);
-let randomFalseStudentName = students.find(student => student);
-console.log(randomFalseStudentName.name);
-falseStudent = document.querySelector('#option2');
-falseStudent.textContent = `${randomFalseStudentName.name}`;
-falseStudent.value = false;
-// False student 2
-shuffleRandomStudent(students);
-randomFalseStudentName = students.find(student => student);
-console.log(randomFalseStudentName.name);
-falseStudent = document.querySelector('#option3');
-falseStudent.textContent = `${randomFalseStudentName.name}`;
-falseStudent.value = false;
-// False student 3
-shuffleRandomStudent(students);
-randomFalseStudentName = students.find(student => student);
-console.log(randomFalseStudentName.name);
-falseStudent = document.querySelector('#option4');
-falseStudent.textContent = `${randomFalseStudentName.name}`;
-falseStudent.value = false;
+});
 
 // falseStudent.value = randomFalseStudentName.id;		// Finding id
 // falseStudent.name = randomFalseStudentName.name;		// Finding name
@@ -92,17 +107,6 @@ falseStudent.value = false;
 // console.log(students.slice(0, 10));						// 10 random students
 // console.log(students.slice(0, 20));						// 20 random students
 // console.log(students);									// ALL students
-
-gameOptions.addEventListener('click', e => {
-	e.preventDefault();
-	// console.log('You clicked the options.', e.target);
-
-	if (e.target === trueStudent) {
-		console.log('Correct');
-	} else {
-		console.log('Wrong');
-	}; 
-});
 
 // navigationButtons.addEventListener('click', e => {
 // 	e.preventDefault();
@@ -121,6 +125,19 @@ nbrOfGames.addEventListener('click', e => {
 	} else if (e.target === btn20) {
 		console.log(students.slice(0, 20));						// 20 random students	
 	} else {
-		console.log(students);						// 20 random students	
+		console.log(students);									// 20 random students	
 	};
+});
+
+gameOptions.addEventListener('click', e => {
+	e.preventDefault();
+	// console.log('You clicked the options.', e.target);
+
+	if (e.target === trueStudent) {
+		console.log('True');
+		turnout.innerHTML = `<p>True</p>`;
+	} else {
+		console.log('False');
+		turnout.innerHTML = `<p>False</p>`;
+	}; 
 });
