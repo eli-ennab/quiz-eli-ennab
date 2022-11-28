@@ -1,5 +1,6 @@
 const gameOptions = document.querySelector('#gameOptions');
-const turnout = document.querySelector('#turnout');
+const nbrOfGamesInfoBox = document.querySelector('#nbrOfGamesInfoBox');
+const infoBox = document.querySelector('#infoBox');
 
 // // Get the random 3 false names
 
@@ -30,7 +31,6 @@ shuffleRandomStudent(students);
 let trueStudent;
 let falseStudent;
 
-
 // A function that gives the new true student (name and image)
 function newTrueStudent() {
 	const randomStudentImage = students.find(student => student);   	// Random students name's image
@@ -51,6 +51,7 @@ newTrueStudent();
 // A function that gives three new false student (names)
 
 function newFalseStudents() {
+
 	// False student 1
 	shuffleRandomStudent(students);
 	let randomFalseStudentName = students.find(student => student);
@@ -74,30 +75,64 @@ function newFalseStudents() {
 
 newFalseStudents();
 
-// let correctGuesses = 0;
-// let falseGuesses = 0;
-let guesses = 0;
+let correctGuesses = 0;
+let falseGuesses = 0;
+
+gameOptions.addEventListener('click', e => {
+	e.preventDefault();
+	// console.log('You clicked the options.', e.target);
+
+	if (e.target === trueStudent) {
+		correctGuesses++;
+		console.log('True');
+		infoBox.innerHTML = `${correctGuesses} correct guesses.`;
+	} else {
+		falseGuesses++;
+		console.log('False');
+		infoBox.innerHTML = `${falseGuesses} false guesses.`;
+	}; 
+});
+
+// console.log(`You got ${correctGuesses} correct guesses and ${falseGuesses} false guesses.`);
+
+let guesses;
+let allStudents = students.length;
+
+console.log('Start of game');
+
+nbrOfGames.addEventListener('click', e => {
+	e.preventDefault();
+
+	if (e.target === btn10) {
+		guesses = 10;
+		nbrOfGamesInfoBox.innerHTML = (`<h3>You have chosen ${guesses} students.</h3>`);
+	} else if (e.target === btn20) {
+		guesses = 20;
+		nbrOfGamesInfoBox.innerHTML = (`<h3>You have chosen ${guesses} students.</h3>`);
+	} else {
+		guesses = allStudents;
+		nbrOfGamesInfoBox.innerHTML = (`<h3>You have chosen all ${allStudents} students.</h3>`);
+	};
+});
 
 navigationButtons.addEventListener('click', e => {
 		e.preventDefault();
+
+		infoBox.innerHTML = `<p></p>`;
 
 		if (e.target === btnSubmitAnswer) {
 			shuffleRandomStudent(students);
 			newTrueStudent();
 			newFalseStudents();
-			guesses++;
-			console.log(`Number of guesses: ${guesses}.`);
-			// correctGuesses++;
-			// console.log(`${correctGuesses} correct guesses.`);
-		} else {
+			guesses--;
+			infoBox.innerHTML = (`<h3>You have ${guesses} students left.</h3>`);
+		} else if (e.target === btnResetGame){
 			alert('You gave up!');
 			guesses = 0;
 			newTrueStudent();
 			newFalseStudents();
-			turnout.innerHTML = ``;
-			// falseGuesses++;
-			// console.log(`${falseGuesses} false guesses.`);
-		};
+			infoBox.innerHTML = ``;
+		} 
 });
 
 // falseStudent.value = randomFalseStudentName.id;		// Finding id
@@ -117,27 +152,14 @@ navigationButtons.addEventListener('click', e => {
 // 	};
 // });
 
-nbrOfGames.addEventListener('click', e => {
-	e.preventDefault();
+// nbrOfGames.addEventListener('click', e => {
+// 	e.preventDefault();
 
-	if (e.target === btn10) {
-		console.log(students.slice(0, 10));						// 10 random students
-	} else if (e.target === btn20) {
-		console.log(students.slice(0, 20));						// 20 random students	
-	} else {
-		console.log(students);									// 20 random students	
-	};
-});
-
-gameOptions.addEventListener('click', e => {
-	e.preventDefault();
-	// console.log('You clicked the options.', e.target);
-
-	if (e.target === trueStudent) {
-		console.log('True');
-		turnout.innerHTML = `<p>True</p>`;
-	} else {
-		console.log('False');
-		turnout.innerHTML = `<p>False</p>`;
-	}; 
-});
+// 	if (e.target === btn10) {
+// 		console.log(students.slice(0, 10));						// 10 random students
+// 	} else if (e.target === btn20) {
+// 		console.log(students.slice(0, 20));						// 20 random students	
+// 	} else {
+// 		console.log(students);									// 20 random students	
+// 	};
+// });
