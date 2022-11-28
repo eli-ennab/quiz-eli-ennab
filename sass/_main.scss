@@ -6,8 +6,11 @@
 \*-------------------------------------------*/
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
     font-size: 1.5rem;
+    color: $primary-color;
 }
 
 h2 {
@@ -17,6 +20,7 @@ h2 {
 .mx-auto {
     padding-top: 100px;
     width: 80vw;
+    background-color: $secondary-color;
 }
 
 #studentImage {
@@ -28,6 +32,16 @@ h2 {
 
 .btn {
     margin: 10px;
+}
+
+#option1,
+#option2,
+#option3,
+#option4 {
+    background-color: $secondary-color;
+    color: $primary-color;
+    width: 100px;
+    height: 100px;
 }
 
 .btn-success,
