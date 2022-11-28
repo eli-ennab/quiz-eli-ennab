@@ -85,12 +85,15 @@ gameOptions.addEventListener('click', e => {
 	if (e.target === trueStudent) {
 		correctGuesses++;
 		console.log('True');
-		infoBox.innerHTML = `${correctGuesses} correct guesses.`;
+		infoBox.innerHTML = `<h4>TRUE<h4>`;
 	} else {
 		falseGuesses++;
 		console.log('False');
-		infoBox.innerHTML = `${falseGuesses} false guesses.`;
+		infoBox.innerHTML = `<h4>FALSE<h4>`;
 	}; 
+
+	newTrueStudent();
+	newFalseStudents();
 });
 
 // console.log(`You got ${correctGuesses} correct guesses and ${falseGuesses} false guesses.`);
@@ -115,24 +118,19 @@ nbrOfGames.addEventListener('click', e => {
 	};
 });
 
-navigationButtons.addEventListener('click', e => {
+btnResetGame.addEventListener('click', e => {
 		e.preventDefault();
 
 		infoBox.innerHTML = `<p></p>`;
-
-		if (e.target === btnSubmitAnswer) {
-			shuffleRandomStudent(students);
-			newTrueStudent();
-			newFalseStudents();
-			guesses--;
-			infoBox.innerHTML = (`<h3>You have ${guesses} students left.</h3>`);
-		} else if (e.target === btnResetGame){
+		if (e.target === btnResetGame){
 			alert('You gave up!');
 			guesses = 0;
 			newTrueStudent();
 			newFalseStudents();
 			infoBox.innerHTML = ``;
-		} 
+		} else {
+
+		}
 });
 
 // falseStudent.value = randomFalseStudentName.id;		// Finding id
