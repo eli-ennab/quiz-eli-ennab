@@ -26,10 +26,27 @@ const shuffleRandomStudent = (students) => {
 	}
 }
 
-shuffleRandomStudent(students);
-
 let trueStudent;
 let falseStudent;
+
+// To keep count of the correct and false guesses
+let correctGuesses = 0;
+let falseGuesses = 0;
+
+// To keep count of the guesses
+let guesses;
+let allStudents = students.length;
+
+const startNewGame = () => {
+	// Shuffle all the students
+	shuffleRandomStudent(students);
+
+	// First student in shuffle will be the true student
+	newTrueStudent();
+
+	// Next three students will be the false students
+	newFalseStudents();
+}
 
 // A function that gives the new true student (name and image)
 function newTrueStudent() {
@@ -46,10 +63,7 @@ function newTrueStudent() {
 	trueStudent.value = true;
 };
 
-newTrueStudent();
-
 // A function that gives three new false student (names)
-
 function newFalseStudents() {
 
 	// False student 1
@@ -73,11 +87,6 @@ function newFalseStudents() {
 	falseStudent.value = false;
 };
 
-newFalseStudents();
-
-let correctGuesses = 0;
-let falseGuesses = 0;
-
 gameOptions.addEventListener('click', e => {
 	e.preventDefault();
 	// console.log('You clicked the options.', e.target);
@@ -96,12 +105,7 @@ gameOptions.addEventListener('click', e => {
 	newFalseStudents();
 });
 
-// console.log(`You got ${correctGuesses} correct guesses and ${falseGuesses} false guesses.`);
-
-let guesses;
-let allStudents = students.length;
-
-console.log('Start of game');
+startNewGame();
 
 nbrOfGames.addEventListener('click', e => {
 	e.preventDefault();
@@ -121,16 +125,11 @@ nbrOfGames.addEventListener('click', e => {
 btnResetGame.addEventListener('click', e => {
 		e.preventDefault();
 
-		infoBox.innerHTML = `<p></p>`;
-		if (e.target === btnResetGame){
-			alert('You gave up!');
-			guesses = 0;
-			newTrueStudent();
-			newFalseStudents();
-			infoBox.innerHTML = ``;
-		} else {
-
-		}
+		nbrOfGamesInfoBox.innerHTML = (`<h3>You gave up.</h3>`);
+		guesses = 0;
+		newTrueStudent();
+		newFalseStudents();
+		infoBox.innerHTML = ``;
 });
 
 // falseStudent.value = randomFalseStudentName.id;		// Finding id
