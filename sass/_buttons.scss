@@ -1,0 +1,63 @@
+/*-------------------------------------------*\
+   _main.scss
+ 
+   Index
+
+\*-------------------------------------------*/
+
+.btn {
+    border: 1px dotted white;
+    // margin: 10px;
+    font-size: 1rem;
+    font-family: $major-mono;
+    font-weight: lighter;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#nbrOfGames {
+    display: flex;
+    flex-direction: row;
+}
+
+#option1,
+#option2,
+#option3,
+#option4 {
+    background-color: $secondary-color;
+    color: $primary-color;
+    margin: 10px;
+    width: 150px;
+    height: 80px;
+}
+
+.btn-success,
+.btn-danger {
+    margin-top: 20px;
+    height: 40px;
+}
+
+// Medium and large screen
+@media screen and (min-width: 767px) {
+    
+    #option1,
+    #option2,
+    #option3,
+    #option4 {
+        background-color: $secondary-color;
+        color: $primary-color;
+        width: 200px;
+        height: 100px;
+    }
+    
+    .btn-success,
+    .btn-danger {
+        height: 50px;
+    }
+    
+}
