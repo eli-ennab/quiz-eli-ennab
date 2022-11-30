@@ -3,7 +3,7 @@
 */
 
 const gameOptions = document.querySelector('.game-options');
-let trueStudent;
+// let trueStudent;
 let falseStudent;
 
 // Shuffle the students
@@ -16,15 +16,17 @@ const shuffleRandomStudent = (students) => {
 	}
 }
 
-shuffleRandomStudent(students);
+const randomStudents = students.map(student => student)
+console.log(randomStudents);
+shuffleRandomStudent(randomStudents);
 
-// A copy of the array with true students
-trueStudent = students.map(student => student)
+// True students
+
+// Slice 10 true students
+let trueStudent = randomStudents.map(student => student)
+trueStudent = (trueStudent.slice(0, 10));
 console.log(trueStudent);
-// // And slice to ten true students
-// let tenTrueStudents = (trueStudent.slice(0, 10));
-// console.log(tenTrueStudents);
-// A function that gives the new true student (name and image)
+
 function newTrueStudent() {
 	const randomStudentImage = trueStudent[0];   	                            // Random students name's image
 	const image = document.querySelector('#studentImage');          	        // Random student into DOM
@@ -49,8 +51,10 @@ gameOptions.addEventListener('click', e => {
 
 	if (e.target !== trueStudent) {
         infoBox.innerHTML = `<h4>FALSE<h4>`;
+		console.log('Red');
 	} else {
         infoBox.innerHTML = `<h4>TRUE<h4>`;
+		console.log('Green');
     }
 })
 
@@ -81,7 +85,7 @@ const startNewGame20 = () => {
     newTrueStudent();
 
     // Getting false students
-    newFalseStudents();
+    newFalseStudent();
 }
 
 btn20.addEventListener('click', e => {
