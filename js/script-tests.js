@@ -19,6 +19,9 @@ const studentNames = randomStudents.map(student=> student.name);		// A list of a
 const gameButtons = document.querySelectorAll('.game-options');			// All the game options
 const image = document.querySelector('#studentImage');					// The student's image
 
+const nbrOfGamesInfoBox = document.querySelector('#nbrOfGamesInfoBox'); // Number of games chosen
+const infoBox = document.querySelector('#infoBox');						// True or false
+
 let trueStudent;
 let falseStudents;
 let allTrueStudents;
@@ -74,15 +77,17 @@ const startNewGame10 = () => {
 
 		if (e.target.innerText === trueStudent.name) {
 			console.log('Correct.');
+			infoBox.innerHTML = `<h4><span class="success">TRUE</span><h4>`;
 		} else {
 			console.log('False.');
+			infoBox.innerHTML = `<h4><span class="fail">FALSE</span><h4>`;
 		}
 
 		setTimeout(() => {
-			// console.log("Waiting...");
+			infoBox.innerHTML = ``;
 			newStudents();
 			return;
-		}, 1000);
+		}, 2000);
 	})
 }
 
