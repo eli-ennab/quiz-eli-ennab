@@ -15,12 +15,13 @@ const shuffleRandomStudent = (students) => {
 const randomStudents = students.map(student => student)					// A new undestructive list
 shuffleRandomStudent(randomStudents);									// Shuffle the new list
 const studentNames = randomStudents.map(student=> student.name);		// A list of arrays
-// const studentID = randomStudents.map(student=> student.id);
 const gameButtons = document.querySelectorAll('.game-options');			// All the game options
 const image = document.querySelector('#studentImage');					// The student's image
 
-const nbrOfGamesInfoBox = document.querySelector('#nbrOfGamesInfoBox'); // Number of games chosen
 const infoBox = document.querySelector('#infoBox');						// True or false
+const turnoutBox = document.querySelector('#turnoutBox');				// Results!
+const showGameEl = document.querySelector('#game');						// Showing the game when user have chosen game options 10, 20 or all
+
 
 let trueStudent;
 let falseStudents;
@@ -63,7 +64,7 @@ function newStudents() {
 };
 
 btn10.addEventListener('click', e => {
-	const showGameEl = document.querySelector('#game');
+	turnoutBox.classList.add('hide');
 	showGameEl.classList.remove('hide');
 	startNewGame10();
 });
@@ -72,22 +73,47 @@ const startNewGame10 = () => {
 	// Get image and name options
 	newStudents();
 
+	// Define amount of guesses
+	let guesses = 10;
+	// Correct guesses
+	let correctGuesses = 0;
+	// Wrong guesses
+	let wrongGuesses = 0;
+
 	optionButtons.addEventListener('click', e => {
 		e.preventDefault();
 
+		// Guesses countdown
+		guesses--;
+
 		if (e.target.innerText === trueStudent.name) {
-			console.log('Correct.');
+			correctGuesses++;
+			console.log(`Guesses left: ${guesses}`);
 			infoBox.innerHTML = `<h4><span class="success">TRUE</span><h4>`;
 		} else {
-			console.log('False.');
+			wrongGuesses++;
+			console.log(`Guesses left: ${guesses}`);
 			infoBox.innerHTML = `<h4><span class="fail">FALSE</span><h4>`;
 		}
 
 		setTimeout(() => {
 			infoBox.innerHTML = ``;
-			newStudents();
-			return;
-		}, 2000);
+				if (guesses > 0) {
+				newStudents();
+			} else {
+				// console.log('The end');
+				// console.log(`You had ${correctGuesses} correct guesses and ${wrongGuesses} wrong guesses`);
+				showGameEl.classList.add('hide');
+				turnoutBox.classList.remove('hide');
+				if (correctGuesses <= 4) {
+					turnoutBox.innerHTML = `<h3>${correctGuesses}/10 correct guesses. You can do better!</h3>`;
+				} else if (correctGuesses >= 8) {
+				turnoutBox.innerHTML = `<h3>${correctGuesses}/10 correct guesses. Great!</h3>`;
+				} else {
+				turnoutBox.innerHTML = `<h3>IMPRESSIVE! ${correctGuesses}/10 correct guesses.</h3>`;
+				}
+			}
+		}, 1000);
 	})
 }
 
