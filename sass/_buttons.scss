@@ -7,38 +7,51 @@
 
 .btn {
     border: 1px dotted white;
-    // margin: 10px;
-    font-size: 1rem;
+    font-size: .8rem;
     font-family: $major-mono;
     font-weight: lighter;
 }
 
 .btn-group {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-}
-
-#nbrOfGames {
-    display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #option1,
 #option2,
 #option3,
 #option4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: $secondary-color;
     color: $primary-color;
     padding: 10px;
-    width: 150px;
-    height: 80px;
+    width: 120px;
+    height: 70px;
+}
+
+#nbrOfGames {
+    display: flex;
+    justify-content: center;
+}
+
+.nbrOfGames {
+    font-size: .6rem;
+    margin: 2px;
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
 
 .btn-danger {
     margin-top: 20px;
     height: 40px;
+}
+
+#navigationButtons {
+    margin-bottom: 10px;
 }
 
 // Medium and large screen
