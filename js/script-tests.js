@@ -21,7 +21,8 @@ const image = document.querySelector('#studentImage');					// The student's imag
 const infoBox = document.querySelector('#infoBox');						// True or false
 const turnoutBox = document.querySelector('#turnoutBox');				// Results!
 const showGameEl = document.querySelector('#game');						// Showing the game when user have chosen game options 10, 20 or all
-
+// const navigationButtonEl = document.querySelector('#navigationButton'); // Reset button
+const resetGameEl = document.querySelector('btnResetGame');
 
 let trueStudent;
 let falseStudents;
@@ -293,3 +294,11 @@ startNewGameAllStudents = (e) => {
 		}, 1500);
 	})
 };
+
+/*
+* Reset game
+*/
+
+resetGameEl.addEventListener('click', e => {
+	console.log('Reset game', e.target);
+})
