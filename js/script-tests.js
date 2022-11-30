@@ -156,7 +156,7 @@ function newStudents() {
 };
 
 btn20.addEventListener('click', e => {
-	const showGameEl = document.querySelector('#game');
+	turnoutBox.classList.add('hide');
 	showGameEl.classList.remove('hide');
 	startNewGame20();
 });
@@ -165,18 +165,43 @@ const startNewGame20 = () => {
 	// Get image and name options
 	newStudents();
 
+		// Define amount of guesses
+		let guesses = 20;
+		// Correct guesses
+		let correctGuesses = 0;
+		// Wrong guesses
+		let wrongGuesses = 0;
+
 	optionButtons.addEventListener('click', e => {
 		e.preventDefault();
+		// Guesses countdown
+		guesses--;
 
 		if (e.target.innerText === trueStudent.name) {
-			console.log('Correct.');
+			correctGuesses++;
+			infoBox.innerHTML = `<h4><span class="success">TRUE</span><h4>`;
 		} else {
-			console.log('False.');
+			wrongGuesses++;
+			infoBox.innerHTML = `<h4><span class="fail">FALSE</span><h4>`;
 		}
 
 		setTimeout(() => {
-			console.log("Waiting...");
-			newStudents();
+			infoBox.innerHTML = ``;
+				if (guesses > 0) {
+				newStudents();
+			} else {
+				// console.log('The end');
+				// console.log(`You had ${correctGuesses} correct guesses and ${wrongGuesses} wrong guesses`);
+				showGameEl.classList.add('hide');
+				turnoutBox.classList.remove('hide');
+				if (correctGuesses <= 8) {
+					turnoutBox.innerHTML = `<h3>${correctGuesses}/20 correct guesses. You can do better!</h3>`;
+				} else if (correctGuesses >= 16) {
+				turnoutBox.innerHTML = `<h3>${correctGuesses}/20 correct guesses. Great!</h3>`;
+				} else {
+				turnoutBox.innerHTML = `<h3>IMPRESSIVE! ${correctGuesses}/20 correct guesses.</h3>`;
+				}
+			}
 		}, 1500);
 	})
 }
@@ -196,7 +221,6 @@ function newStudents() {
 	// const trueStudentImage = trueStudent;
 	const image = document.querySelector('#studentImage');
 	image.src = `${trueStudent.image}`;
-	console.log(`${trueStudent.name}`);
 
 	// Filter to get all false students
 	falseStudents = studentNames.filter(name => name !== trueStudent.name);
@@ -229,18 +253,43 @@ startNewGameAllStudents = (e) => {
 	// Get image and name options
 	newStudents();
 
+			// Define amount of guesses
+			let guesses = students.length;
+			// Correct guesses
+			let correctGuesses = 0;
+			// Wrong guesses
+			let wrongGuesses = 0;
+
 	optionButtons.addEventListener('click', e => {
-		e.preventDefault();
+		e.preventDefault;
+
+		guesses--;
 
 		if (e.target.innerText === trueStudent.name) {
-			console.log('Correct.');
+			correctGuesses++;
+			infoBox.innerHTML = `<h4><span class="success">TRUE</span><h4>`;
 		} else {
-			console.log('False.');
+			wrongGuesses++;
+			infoBox.innerHTML = `<h4><span class="fail">FALSE</span><h4>`;
 		}
 
 		setTimeout(() => {
-			console.log("Waiting...");
-			newStudents();
+			infoBox.innerHTML = ``;
+				if (guesses > 0) {
+				newStudents();
+			} else {
+				// console.log('The end');
+				// console.log(`You had ${correctGuesses} correct guesses and ${wrongGuesses} wrong guesses`);
+				showGameEl.classList.add('hide');
+				turnoutBox.classList.remove('hide');
+				if (correctGuesses <= 20) {
+					turnoutBox.innerHTML = `<h3>${correctGuesses}/${students.length} correct guesses. You can do better!</h3>`;
+				} else if (correctGuesses >= 34) {
+				turnoutBox.innerHTML = `<h3>${correctGuesses}/${students.length} correct guesses. Great!</h3>`;
+				} else {
+				turnoutBox.innerHTML = `<h3>IMPRESSIVE! ${correctGuesses}/${students.length} correct guesses.</h3>`;
+				}
+			}
 		}, 1500);
 	})
 };
