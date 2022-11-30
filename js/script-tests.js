@@ -17,39 +17,54 @@ const shuffleRandomStudent = (students) => {
 }
 
 const randomStudents = students.map(student => student)
-console.log(randomStudents);
 shuffleRandomStudent(randomStudents);
+const studentNames = randomStudents.map(student=> student.name);
 
-// True students
+let trueStudent;
+let falseStudents;
+let allTrueStudents;
 
 // Slice 10 true students
-let trueStudent = randomStudents.map(student => student)
-trueStudent = (trueStudent.slice(0, 10));
-console.log(trueStudent);
+allTrueStudents = randomStudents.map(student => student)
+allTrueStudents = (allTrueStudents.slice(0, 10));
 
-function newTrueStudent() {
-	const randomStudentImage = trueStudent[0];   	                            // Random students name's image
-	const image = document.querySelector('#studentImage');          	        // Random student into DOM
-	image.src = `${randomStudentImage.image}`;
+function newStudents() {
+	// A new true student
+	trueStudent = allTrueStudents.shift();
 
-	const randomCorrectStudentName = trueStudent.find(student => student);	    // Random true students name
-	trueStudent = document.querySelector('#option1');				            // And into DOM
-	trueStudent.textContent = `${randomCorrectStudentName.name}`;
+	// The true students image
+	const trueStudentImage = trueStudent;
+	const image = document.querySelector('#studentImage');
+	image.src = `${trueStudentImage.image}`;
+
+	// Filter to get all false students
+	falseStudents = studentNames.filter(name => name !== trueStudent.name);
+
+	// Shuffle all false students
+    // shuffleRandomStudent(falseStudents);
+
+	// Get three false student names
+    const falseStudentName = falseStudents.slice(0, 3);
+
+	// Create a new array with four options (one true and three false)
+    const options = [...falseStudentName, trueStudent.name];
+    shuffleRandomStudent(options);
+
+	// Get the options out to the DOM, randomized
+    const gameButtons = document.querySelectorAll('.game-options');
+
+    for (let i=0; i < gameButtons.length; i++) {
+        gameButtons[i].innerHTML = options[i];
+    }
 };
 
-// // A copy of the array with false names
-// falseStudent = students.map(student => student)
-// console.log(falseStudent);
-
-function newFalseStudent() {
-    // WHAT TO DO!
-};
+newStudents();
 
 gameOptions.addEventListener('click', e => {
 	e.preventDefault();
 	// console.log('You clicked the options.', e.target);
 
-	if (e.target !== trueStudent) {
+	if (e.target !== trueStudent.name) {
         infoBox.innerHTML = `<h4>FALSE<h4>`;
 		console.log('Red');
 	} else {
@@ -59,14 +74,16 @@ gameOptions.addEventListener('click', e => {
 })
 
 const startNewGame10 = () => {
-	// Shuffle all the students
-	shuffleRandomStudent(students);
+	// // Shuffle all the students
+	// shuffleRandomStudent(students);
 
-    // Getting true student
-    newTrueStudent();
+    // // Getting true student
+    // newTrueStudent();
 
-    // Getting false students
-    newFalseStudent();
+    // // Getting false students
+    // newFalseStudent();
+
+	newStudents();
 }
 
 btn10.addEventListener('click', e => {
