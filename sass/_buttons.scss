@@ -27,9 +27,11 @@
     align-items: center;
     background-color: $secondary-color;
     color: $primary-color;
+    font-family: $ibm-mono;
     padding: 10px;
     width: 120px;
     height: 70px;
+    margin: 2px;
 }
 
 #nbrOfGames {
@@ -61,8 +63,8 @@
     #option2,
     #option3,
     #option4 {
-        background-color: $secondary-color;
-        color: $primary-color;
+        // background-color: $secondary-color;
+        // color: $primary-color;
         width: 200px;
         height: 100px;
     }

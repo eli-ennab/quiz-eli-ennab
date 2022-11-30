@@ -295,10 +295,10 @@ startNewGameAllStudents = (e) => {
 	})
 };
 
-/*
-* Reset game
-*/
+// /*
+// * Reset game
+// */
 
-resetGameEl.addEventListener('click', e => {
-	console.log('Reset game', e.target);
-})
+// resetGameEl.addEventListener('click', e => {
+// 	console.log('Reset game', e.target);
+// })
