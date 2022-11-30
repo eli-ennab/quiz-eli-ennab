@@ -2,10 +2,6 @@
 * 10 students only
 */
 
-const gameOptions = document.querySelector('.game-options');
-// let trueStudent;
-let falseStudent;
-
 // Shuffle the students
 const shuffleRandomStudent = (students) => {
 	for (let i = students.length - 1; i > 0; i--) {
@@ -19,29 +15,35 @@ const shuffleRandomStudent = (students) => {
 const randomStudents = students.map(student => student)
 shuffleRandomStudent(randomStudents);
 const studentNames = randomStudents.map(student=> student.name);
+const studentID = randomStudents.map(student=> student.id);
 
 let trueStudent;
 let falseStudents;
 let allTrueStudents;
+let falseStudent;
+
+const optionButtons = document.querySelector('#optionButtons');
 
 // Slice 10 true students
-allTrueStudents = randomStudents.map(student => student)
-allTrueStudents = (allTrueStudents.slice(0, 10));
+allTrueStudents = randomStudents
+	.map(student => student)
+	.slice(0, 10);
+// allTrueStudents = (allTrueStudents.slice(0, 10));
 
 function newStudents() {
 	// A new true student
 	trueStudent = allTrueStudents.shift();
 
 	// The true students image
-	const trueStudentImage = trueStudent;
+	// const trueStudentImage = trueStudent;
 	const image = document.querySelector('#studentImage');
-	image.src = `${trueStudentImage.image}`;
+	image.src = `${trueStudent.image}`;
 
 	// Filter to get all false students
 	falseStudents = studentNames.filter(name => name !== trueStudent.name);
 
 	// Shuffle all false students
-    // shuffleRandomStudent(falseStudents);
+    shuffleRandomStudent(falseStudents);
 
 	// Get three false student names
     const falseStudentName = falseStudents.slice(0, 3);
@@ -58,72 +60,145 @@ function newStudents() {
     }
 };
 
-newStudents();
-
-gameOptions.addEventListener('click', e => {
-	e.preventDefault();
-	// console.log('You clicked the options.', e.target);
-
-	if (e.target !== trueStudent.name) {
-        infoBox.innerHTML = `<h4>FALSE<h4>`;
-		console.log('Red');
-	} else {
-        infoBox.innerHTML = `<h4>TRUE<h4>`;
-		console.log('Green');
-    }
-})
+btn10.addEventListener('click', e => {
+	const showGameEl = document.querySelector('#game');
+	showGameEl.classList.remove('hide');
+	startNewGame10();
+});
 
 const startNewGame10 = () => {
-	// // Shuffle all the students
-	// shuffleRandomStudent(students);
-
-    // // Getting true student
-    // newTrueStudent();
-
-    // // Getting false students
-    // newFalseStudent();
-
+	// Get image and name options
 	newStudents();
-}
 
-btn10.addEventListener('click', e => {
-    startNewGame10();
-});
+	optionButtons.addEventListener('click', e => {
+		e.preventDefault();
+
+		// if (studentNames === studentID) {
+		// 	alert('Correct!');
+		// } else {
+		// 	console.log('TBC...');
+		// }
+
+		setTimeout(() => {
+			// console.log("Waiting...");
+			newStudents();
+			return;
+		}, 1000);
+	})
+}
 
 /*
 * 20 students only
 */
 
-const startNewGame20 = () => {
-	// Shuffle all the students
-	shuffleRandomStudent(students);
+// Slice 20 true students
+allTrueStudents = randomStudents.map(student => student)
+allTrueStudents = (allTrueStudents.slice(0, 20));
 
-    // Getting true student
-    newTrueStudent();
+function newStudents() {
+	// A new true student
+	trueStudent = allTrueStudents.shift();
 
-    // Getting false students
-    newFalseStudent();
-}
+	// The true students image
+	// const trueStudentImage = trueStudent;
+	const image = document.querySelector('#studentImage');
+	image.src = `${trueStudent.image}`;
+
+	// Filter to get all false students
+	falseStudents = studentNames.filter(name => name !== trueStudent.name);
+
+	// Shuffle all false students
+    shuffleRandomStudent(falseStudents);
+
+	// Get three false student names
+    const falseStudentName = falseStudents.slice(0, 3);
+
+	// Create a new array with four options (one true and three false)
+    const options = [...falseStudentName, trueStudent.name];
+    shuffleRandomStudent(options);
+
+	// Get the options out to the DOM, randomized
+    const gameButtons = document.querySelectorAll('.game-options');
+
+    for (let i=0; i < gameButtons.length; i++) {
+        gameButtons[i].innerHTML = options[i];
+    }
+};
 
 btn20.addEventListener('click', e => {
-    startNewGame20();
+	const showGameEl = document.querySelector('#game');
+	showGameEl.classList.remove('hide');
+	startNewGame20();
 });
+
+const startNewGame20 = () => {
+	// Get image and name options
+	newStudents();
+
+	optionButtons.addEventListener('click', e => {
+		e.preventDefault();
+
+		setTimeout(() => {
+			console.log("Waiting...");
+			newStudents();
+		}, 1500);
+	})
+}
 
 /*
 * ALL students
 */
 
-const startNewGameAll = () => {
-	// Shuffle all the students
-	shuffleRandomStudent(students);
+// All true students
+allTrueStudents = randomStudents.map(student => student)
 
-    // Getting true student
-    newTrueStudent();
+function newStudents() {
+	// A new true student
+	trueStudent = allTrueStudents.shift();
 
-    // Getting false students
-    newFalseStudents();
-}
+	// The true students image
+	// const trueStudentImage = trueStudent;
+	const image = document.querySelector('#studentImage');
+	image.src = `${trueStudent.image}`;
+	console.log(`${trueStudent.name}`);
+
+	// Filter to get all false students
+	falseStudents = studentNames.filter(name => name !== trueStudent.name);
+
+	// Shuffle all false students
+    shuffleRandomStudent(falseStudents);
+
+	// Get three false student names
+    const falseStudentName = falseStudents.slice(0, 3);
+
+	// Create a new array with four options (one true and three false)
+    const options = [...falseStudentName, trueStudent.name];
+    shuffleRandomStudent(options);
+
+	// Get the options out to the DOM, randomized
+    const gameButtons = document.querySelectorAll('.game-options');
+
+    for (let i=0; i < gameButtons.length; i++) {
+        gameButtons[i].innerHTML = options[i];
+    }
+};
 
 btnAll.addEventListener('click', e => {
-    startNewGameAll();
+	const showGameEl = document.querySelector('#game');
+	showGameEl.classList.remove('hide');
+	startNewGameAllStudents();
 });
+
+startNewGameAllStudents = (e) => {
+	// Get image and name options
+	newStudents();
+
+	optionButtons.addEventListener('click', e => {
+		e.preventDefault();
+
+		setTimeout(() => {
+			console.log("Waiting...");
+			newStudents();
+		}, 1500);
+	})
+};

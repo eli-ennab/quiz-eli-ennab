@@ -22,36 +22,37 @@
     
       <header class="mb-auto">
         <h1 id="h1">Match the face with the name</h1>
-      </header> 
+
     
-    <main class="mx-auto">
-      <h2>Select gamemode</h2>
-        <div id="nbrOfGames" class="btn-group" role="group">
-          <button id="btn10" type="submit" class="btn btn-secondary">10 students</button>
-          <button id="btn20" type="submit" class="btn btn-secondary">20 students</button>
-          <button id="btnAll" type="submit" class="btn btn-secondary">All students</button>
-        </div>
+          <h2>Select gamemode</h2>
+            <div id="nbrOfGames" class="btn-group" role="group">
+              <button id="btn10" type="submit" class="btn btn-secondary">10 students</button>
+              <button id="btn20" type="submit" class="btn btn-secondary">20 students</button>
+              <button id="btnAll" type="submit" class="btn btn-secondary">All students</button>
+            </div>
 
-      <div id="nbrOfGamesInfoBox"></div>
+          <div id="nbrOfGamesInfoBox"></div>
+        </header> 
 
+  <main id="game" class="mx-auto hide">
       <div class="mx-auto">
         <img src="" id="studentImage" class="image image-fluid"></img>
       </div>
 
       <div id="infoBox"></div>
 
-      <div id="gameOptions" class="btn-group" role="group">
-        <button id="option1" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
-        <button id="option2" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
-        <button id="option3" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
-        <button id="option4" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
-      </div>
+        <div id="optionButtons" class="btn-group" role="group">
+          <button id="option1" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
+          <button id="option2" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
+          <button id="option3" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
+          <button id="option4" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
+        </div>
 
-      <div id="navigationButtons">
-        <!-- <button id="btnSubmitAnswer" class="btn btn-success btn-lg ml-2" type="submit">Submit answer</button> -->
-        <button id="btnResetGame" class="btn btn-danger btn-lg ml-2" type="reset">New game</button>
-      </div>
-      </main>
+        <div id="navigationButtons">
+          <!-- <button id="btnSubmitAnswer" class="btn btn-success btn-lg ml-2" type="submit">Submit answer</button> -->
+          <button id="btnResetGame" class="btn btn-danger btn-lg ml-2" type="reset">New game</button>
+        </div>
+  </main>
     
       <!-- <footer class="mt-auto text-white-50">
         <p>Quiz made by padawans for main padawan, 2022.</p>
