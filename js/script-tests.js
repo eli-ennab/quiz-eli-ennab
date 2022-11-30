@@ -12,10 +12,12 @@ const shuffleRandomStudent = (students) => {
 	}
 }
 
-const randomStudents = students.map(student => student)
-shuffleRandomStudent(randomStudents);
-const studentNames = randomStudents.map(student=> student.name);
-const studentID = randomStudents.map(student=> student.id);
+const randomStudents = students.map(student => student)					// A new undestructive list
+shuffleRandomStudent(randomStudents);									// Shuffle the new list
+const studentNames = randomStudents.map(student=> student.name);		// A list of arrays
+// const studentID = randomStudents.map(student=> student.id);
+const gameButtons = document.querySelectorAll('.game-options');			// All the game options
+const image = document.querySelector('#studentImage');					// The student's image
 
 let trueStudent;
 let falseStudents;
@@ -36,7 +38,6 @@ function newStudents() {
 
 	// The true students image
 	// const trueStudentImage = trueStudent;
-	const image = document.querySelector('#studentImage');
 	image.src = `${trueStudent.image}`;
 
 	// Filter to get all false students
@@ -53,8 +54,6 @@ function newStudents() {
     shuffleRandomStudent(options);
 
 	// Get the options out to the DOM, randomized
-    const gameButtons = document.querySelectorAll('.game-options');
-
     for (let i=0; i < gameButtons.length; i++) {
         gameButtons[i].innerHTML = options[i];
     }
@@ -73,11 +72,11 @@ const startNewGame10 = () => {
 	optionButtons.addEventListener('click', e => {
 		e.preventDefault();
 
-		// if (studentNames === studentID) {
-		// 	alert('Correct!');
-		// } else {
-		// 	console.log('TBC...');
-		// }
+		if (e.target.innerText === trueStudent.name) {
+			console.log('Correct.');
+		} else {
+			console.log('False.');
+		}
 
 		setTimeout(() => {
 			// console.log("Waiting...");
@@ -138,6 +137,12 @@ const startNewGame20 = () => {
 	optionButtons.addEventListener('click', e => {
 		e.preventDefault();
 
+		if (e.target.innerText === trueStudent.name) {
+			console.log('Correct.');
+		} else {
+			console.log('False.');
+		}
+
 		setTimeout(() => {
 			console.log("Waiting...");
 			newStudents();
@@ -195,6 +200,12 @@ startNewGameAllStudents = (e) => {
 
 	optionButtons.addEventListener('click', e => {
 		e.preventDefault();
+
+		if (e.target.innerText === trueStudent.name) {
+			console.log('Correct.');
+		} else {
+			console.log('False.');
+		}
 
 		setTimeout(() => {
 			console.log("Waiting...");
