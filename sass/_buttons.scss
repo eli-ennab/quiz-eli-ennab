@@ -48,7 +48,7 @@
 }
 
 .btn-danger {
-    margin-top: 20px;
+    margin: 20px 0px;
     height: 40px;
 }
 
@@ -56,21 +56,77 @@
     margin-bottom: 10px;
 }
 
+// Small screen
+@media screen and (min-width: 460px) {
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+  }
+
 // Medium and large screen
 @media screen and (min-width: 767px) {
     
+
+    // .btn-group {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     justify-content: center;
+    //     margin-left: 20%;
+    //     margin-right: 20%;
+    // }
+
+    // #option1,
+    // #option2,
+    // #option3,
+    // #option4 {
+    //     width: 300px;
+    //     height: 150px;
+    // }
+    
+    // .btn-danger {
+    //     height: 50px;
+    // }
+    
+}
+
+// Large screen
+@media screen and (min-width: 1023px) {
+    .nbrOfGames {
+        display: flex;
+        justify-content: center;
+        font-size: .8rem;
+        margin: 2px;
+        height: 40px;
+        width: 200px;
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
     #option1,
     #option2,
     #option3,
     #option4 {
-        // background-color: $secondary-color;
-        // color: $primary-color;
-        width: 200px;
-        height: 100px;
+        width: 280px;
+        height: 150px;
     }
     
     .btn-danger {
         height: 50px;
     }
-    
+
+    #turnoutBox {
+        width: 600px;
+    }
 }
