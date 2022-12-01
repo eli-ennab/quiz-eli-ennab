@@ -110,9 +110,7 @@ const startNewGame10 = () => {
 					turnoutBox.innerHTML = `<h3>${correctGuesses}/10 correct guesses. You can do better!</h3>`;
 				} else if (correctGuesses >= 8) {
 				turnoutBox.innerHTML = `<h3>${correctGuesses}/10 correct guesses. Great!</h3>`;
-				} else {
-				turnoutBox.innerHTML = `<h3>IMPRESSIVE! ${correctGuesses}/10 correct guesses.</h3>`;
-				}
+				};
 			}
 		}, 1000);
 	})
@@ -199,9 +197,7 @@ const startNewGame20 = () => {
 					turnoutBox.innerHTML = `<h3>${correctGuesses}/20 correct guesses. You can do better!</h3>`;
 				} else if (correctGuesses >= 16) {
 				turnoutBox.innerHTML = `<h3>${correctGuesses}/20 correct guesses. Great!</h3>`;
-				} else {
-				turnoutBox.innerHTML = `<h3>IMPRESSIVE! ${correctGuesses}/20 correct guesses.</h3>`;
-				}
+				};
 			}
 		}, 1500);
 	})
@@ -287,9 +283,7 @@ startNewGameAllStudents = (e) => {
 					turnoutBox.innerHTML = `<h3>${correctGuesses}/${students.length} correct guesses. You can do better!</h3>`;
 				} else if (correctGuesses >= 34) {
 				turnoutBox.innerHTML = `<h3>${correctGuesses}/${students.length} correct guesses. Great!</h3>`;
-				} else {
-				turnoutBox.innerHTML = `<h3>IMPRESSIVE! ${correctGuesses}/${students.length} correct guesses.</h3>`;
-				}
+				};
 			}
 		}, 1500);
 	})
