@@ -47,13 +47,12 @@
     align-items: center;
 }
 
-.btn-danger {
-    margin: 20px 0px;
-    height: 40px;
-}
-
 #navigationButtons {
     margin-bottom: 10px;
+}
+
+.btnResetGame {
+    font-family: $ibm-mono;
 }
 
 // Small screen
