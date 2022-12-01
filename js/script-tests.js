@@ -21,9 +21,9 @@ const infoBox = document.querySelector('#infoBox');							// True or false
 const turnoutBox = document.querySelector('#turnoutBox');					// Results!
 
 // Buttons
-const nbrOfGames = document.querySelector('#nbrOfGames');					// Number of games option buttons
-// const navigationButtonEl = document.querySelector('#navigationButton');  // Reset button
-const resetGameEl = document.querySelector('btnResetGame');					// Reset button alternative
+// const nbrOfGames = document.querySelector('#nbrOfGames');					// Number of games option buttons
+const gameModeEl = document.querySelector('#gameMode');
+const startNewGame = document.querySelector('#btnstartNewGame');				// Start new game button
 const optionButtons = document.querySelector('#optionButtons');				// Game option buttons
 const gameButtons = document.querySelectorAll('.game-options');				// Also game option buttons
 
@@ -31,7 +31,7 @@ const gameButtons = document.querySelectorAll('.game-options');				// Also game 
 const nbrOfGames10 = document.querySelector('.nbrOfGames10').innerText += "10 students";
 const nbrOfGames20 = document.querySelector('.nbrOfGames20').innerText += "20 students";
 const nbrOfGamesAll = document.querySelector('.nbrOfGamesAll').innerText += "All students";
-const btnResetGame = document.querySelector('.btnResetGame').innerText = "Start over";
+const btnstartNewGame = document.querySelector('.btnstartNewGame').innerText = "Start new game";
 
 // h1, h2 and footer to the DOM
 const h1 = document.querySelector('#h1').innerText = "Match the face with the name";
@@ -61,6 +61,30 @@ const shuffleRandomStudent = (students) => {
 }
 
 shuffleRandomStudent(randomStudents);										// Shuffle the new list
+
+
+/*
+* Start new game
+*/
+
+// Listen for reset / "New game"
+startNewGame.addEventListener('click', (e) => {
+	console.log("You clicked me?", e.target);
+
+	gameModeEl.classList.remove('hide');
+	turnoutBox.classList.add('hide');
+    // // Start a new game
+    // startNewGame();
+
+    // // Reset number of guesses
+    // updateGuesses(guesses);
+
+    // // Empty previuos result
+    // turnoutEl.innerHTML = '';
+
+    // // Enable submit-button again
+    // btnGetLuckyEl.removeAttribute('disabled');
+ });
 
 /*
 *  Game option: 10 students
@@ -93,6 +117,7 @@ function newStudents() {
 
 btn10.addEventListener('click', e => {
 	turnoutBox.classList.add('hide');
+	startNewGame.classList.add('hide');
 	showGameEl.classList.remove('hide');
 	startNewGame10();
 });
@@ -100,6 +125,8 @@ btn10.addEventListener('click', e => {
 const startNewGame10 = () => {
 	// Get image and name options
 	newStudents();
+
+	gameModeEl.classList.add('hide');
 
 	let guesses = 10;
 	let correctGuesses = 0;
@@ -127,6 +154,7 @@ const startNewGame10 = () => {
 			} else {
 				showGameEl.classList.add('hide');
 				turnoutBox.classList.remove('hide');
+				startNewGame.classList.remove('hide');
 				if (correctGuesses <= 4) {
 					turnoutBox.innerHTML = `<h3>${correctGuesses}/10 correct guesses. You can do better!</h3>`;
 				} else if (correctGuesses >= 8) {
@@ -204,6 +232,7 @@ const startNewGame20 = () => {
 			} else {
 				showGameEl.classList.add('hide');
 				turnoutBox.classList.remove('hide');
+				startNewGame.classList.remove('hide');
 				if (correctGuesses <= 8) {
 					turnoutBox.innerHTML = `<h3>${correctGuesses}/20 correct guesses. You can do better!</h3>`;
 				} else if (correctGuesses >= 16) {
@@ -277,6 +306,7 @@ startNewGameAllStudents = (e) => {
 			} else {
 				showGameEl.classList.add('hide');
 				turnoutBox.classList.remove('hide');
+				startNewGame.classList.remove('hide');
 				if (correctGuesses <= 20) {
 					turnoutBox.innerHTML = `<h3>${correctGuesses}/${students.length} correct guesses. You can do better!</h3>`;
 				} else if (correctGuesses >= 34) {
@@ -286,11 +316,3 @@ startNewGameAllStudents = (e) => {
 		}, 1500);
 	})
 };
-
-// /*
-// * Reset game
-// */
-
-// resetGameEl.addEventListener('click', e => {
-// 	console.log('Reset game', e.target);
-// })
