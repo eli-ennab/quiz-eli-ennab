@@ -1,5 +1,36 @@
+/*-------------------------------------------*\
+   JS Script Index
+ 
+   - All const and let for all game options
+   - The (Fisher-Yates) Shuffle
+   - Game option: 10 students
+   - Game option: 20 students
+   - Game option: All students
+
+\*-------------------------------------------*/
+
 /*
-* 10 students only
+*  All const and let for all game options
+*/
+
+const randomStudents = students.map(student => student)						// A new undestructive list
+const studentNames = randomStudents.map(student=> student.name);			// A list of arrays
+const gameButtons = document.querySelectorAll('.game-options');				// All the game options
+const image = document.querySelector('#studentImage');						// The student's image
+const infoBox = document.querySelector('#infoBox');							// True or false
+const turnoutBox = document.querySelector('#turnoutBox');					// Results!
+const showGameEl = document.querySelector('#game');							// Showing the game when user have chosen game options 10, 20 or all
+// const navigationButtonEl = document.querySelector('#navigationButton');  // Reset button
+const resetGameEl = document.querySelector('btnResetGame');					// Reset button alternative
+const optionButtons = document.querySelector('#optionButtons');				// Game option buttons
+
+let trueStudent;
+let falseStudents;
+let allTrueStudents;
+let falseStudent;
+
+/*
+*  The (Fisher-Yates) Shuffle
 */
 
 // Shuffle the students
@@ -12,53 +43,32 @@ const shuffleRandomStudent = (students) => {
 	}
 }
 
-const randomStudents = students.map(student => student)					// A new undestructive list
-shuffleRandomStudent(randomStudents);									// Shuffle the new list
-const studentNames = randomStudents.map(student=> student.name);		// A list of arrays
-const gameButtons = document.querySelectorAll('.game-options');			// All the game options
-const image = document.querySelector('#studentImage');					// The student's image
+shuffleRandomStudent(randomStudents);										// Shuffle the new list
 
-const infoBox = document.querySelector('#infoBox');						// True or false
-const turnoutBox = document.querySelector('#turnoutBox');				// Results!
-const showGameEl = document.querySelector('#game');						// Showing the game when user have chosen game options 10, 20 or all
-// const navigationButtonEl = document.querySelector('#navigationButton'); // Reset button
-const resetGameEl = document.querySelector('btnResetGame');
-
-let trueStudent;
-let falseStudents;
-let allTrueStudents;
-let falseStudent;
-
-const optionButtons = document.querySelector('#optionButtons');
+/*
+*  Game option: 10 students
+*/
 
 // Slice 10 true students
 allTrueStudents = randomStudents
 	.map(student => student)
 	.slice(0, 10);
-// allTrueStudents = (allTrueStudents.slice(0, 10));
 
 function newStudents() {
-	// A new true student
+
 	trueStudent = allTrueStudents.shift();
 
-	// The true students image
-	// const trueStudentImage = trueStudent;
 	image.src = `${trueStudent.image}`;
 
-	// Filter to get all false students
 	falseStudents = studentNames.filter(name => name !== trueStudent.name);
 
-	// Shuffle all false students
     shuffleRandomStudent(falseStudents);
 
-	// Get three false student names
     const falseStudentName = falseStudents.slice(0, 3);
 
-	// Create a new array with four options (one true and three false)
     const options = [...falseStudentName, trueStudent.name];
     shuffleRandomStudent(options);
 
-	// Get the options out to the DOM, randomized
     for (let i=0; i < gameButtons.length; i++) {
         gameButtons[i].innerHTML = options[i];
     }
@@ -74,17 +84,13 @@ const startNewGame10 = () => {
 	// Get image and name options
 	newStudents();
 
-	// Define amount of guesses
 	let guesses = 10;
-	// Correct guesses
 	let correctGuesses = 0;
-	// Wrong guesses
 	let wrongGuesses = 0;
 
 	optionButtons.addEventListener('click', e => {
 		e.preventDefault();
 
-		// Guesses countdown
 		guesses--;
 
 		if (e.target.innerText === trueStudent.name) {
@@ -102,8 +108,6 @@ const startNewGame10 = () => {
 				if (guesses > 0) {
 				newStudents();
 			} else {
-				// console.log('The end');
-				// console.log(`You had ${correctGuesses} correct guesses and ${wrongGuesses} wrong guesses`);
 				showGameEl.classList.add('hide');
 				turnoutBox.classList.remove('hide');
 				if (correctGuesses <= 4) {
@@ -117,37 +121,33 @@ const startNewGame10 = () => {
 }
 
 /*
-* 20 students only
+* Game option: 20 students
 */
 
 // Slice 20 true students
-allTrueStudents = randomStudents.map(student => student)
-allTrueStudents = (allTrueStudents.slice(0, 20));
+// allTrueStudents = randomStudents.map(student => student)
+// allTrueStudents = (allTrueStudents.slice(0, 20));
+allTrueStudents = randomStudents
+	.map(student => student)
+	.slice(0, 20);
 
 function newStudents() {
-	// A new true student
-	trueStudent = allTrueStudents.shift();
 
-	// The true students image
-	// const trueStudentImage = trueStudent;
-	const image = document.querySelector('#studentImage');
-	image.src = `${trueStudent.image}`;
+	trueStudent = allTrueStudents.shift();													// A new true student
 
-	// Filter to get all false students
-	falseStudents = studentNames.filter(name => name !== trueStudent.name);
+	const image = document.querySelector('#studentImage');									// The true students image
+	image.src = `${trueStudent.image}`;														// Image into the DOM
 
-	// Shuffle all false students
-    shuffleRandomStudent(falseStudents);
+	falseStudents = studentNames.filter(name => name !== trueStudent.name);					// Filter to get all false students
 
-	// Get three false student names
-    const falseStudentName = falseStudents.slice(0, 3);
+    shuffleRandomStudent(falseStudents);													// Shuffle all false students
 
-	// Create a new array with four options (one true and three false)
-    const options = [...falseStudentName, trueStudent.name];
+    const falseStudentName = falseStudents.slice(0, 3);										// Get three false student names
+
+    const options = [...falseStudentName, trueStudent.name];								// Create a new array with four options (one true and three false)
     shuffleRandomStudent(options);
 
-	// Get the options out to the DOM, randomized
-    const gameButtons = document.querySelectorAll('.game-options');
+    const gameButtons = document.querySelectorAll('.game-options');							// Get the options out to the DOM, randomized
 
     for (let i=0; i < gameButtons.length; i++) {
         gameButtons[i].innerHTML = options[i];
@@ -161,20 +161,16 @@ btn20.addEventListener('click', e => {
 });
 
 const startNewGame20 = () => {
-	// Get image and name options
-	newStudents();
+	newStudents();																			// Get image and name options
 
-		// Define amount of guesses
-		let guesses = 20;
-		// Correct guesses
-		let correctGuesses = 0;
-		// Wrong guesses
-		let wrongGuesses = 0;
+		let guesses = 20;																	// Define amount of guesses
+		let correctGuesses = 0;																// Correct guesses
+		let wrongGuesses = 0;																// Wrong guesses
 
 	optionButtons.addEventListener('click', e => {
 		e.preventDefault();
-		// Guesses countdown
-		guesses--;
+
+		guesses--;																			// Guesses countdown
 
 		if (e.target.innerText === trueStudent.name) {
 			correctGuesses++;
@@ -189,8 +185,6 @@ const startNewGame20 = () => {
 				if (guesses > 0) {
 				newStudents();
 			} else {
-				// console.log('The end');
-				// console.log(`You had ${correctGuesses} correct guesses and ${wrongGuesses} wrong guesses`);
 				showGameEl.classList.add('hide');
 				turnoutBox.classList.remove('hide');
 				if (correctGuesses <= 8) {
@@ -204,36 +198,29 @@ const startNewGame20 = () => {
 }
 
 /*
-* ALL students
+*  Game option: All students
 */
 
 // All true students
 allTrueStudents = randomStudents.map(student => student)
 
 function newStudents() {
-	// A new true student
-	trueStudent = allTrueStudents.shift();
+	
+	trueStudent = allTrueStudents.shift();												// A new true student
 
-	// The true students image
-	// const trueStudentImage = trueStudent;
-	const image = document.querySelector('#studentImage');
+	const image = document.querySelector('#studentImage');								// The true students image
 	image.src = `${trueStudent.image}`;
 
-	// Filter to get all false students
-	falseStudents = studentNames.filter(name => name !== trueStudent.name);
+	falseStudents = studentNames.filter(name => name !== trueStudent.name);				// Filter to get all false students
 
-	// Shuffle all false students
-    shuffleRandomStudent(falseStudents);
+    shuffleRandomStudent(falseStudents);												// Shuffle all false students
 
-	// Get three false student names
-    const falseStudentName = falseStudents.slice(0, 3);
+    const falseStudentName = falseStudents.slice(0, 3);									// Get three false student names
 
-	// Create a new array with four options (one true and three false)
-    const options = [...falseStudentName, trueStudent.name];
-    shuffleRandomStudent(options);
+    const options = [...falseStudentName, trueStudent.name];							// Create a new array with four options (one true and three false)
+    shuffleRandomStudent(options);														// Then shuffle the current options
 
-	// Get the options out to the DOM, randomized
-    const gameButtons = document.querySelectorAll('.game-options');
+    const gameButtons = document.querySelectorAll('.game-options');						// Get the options out to the DOM, randomized
 
     for (let i=0; i < gameButtons.length; i++) {
         gameButtons[i].innerHTML = options[i];
@@ -247,14 +234,10 @@ btnAll.addEventListener('click', e => {
 });
 
 startNewGameAllStudents = (e) => {
-	// Get image and name options
 	newStudents();
 
-			// Define amount of guesses
 			let guesses = students.length;
-			// Correct guesses
 			let correctGuesses = 0;
-			// Wrong guesses
 			let wrongGuesses = 0;
 
 	optionButtons.addEventListener('click', e => {
@@ -275,8 +258,6 @@ startNewGameAllStudents = (e) => {
 				if (guesses > 0) {
 				newStudents();
 			} else {
-				// console.log('The end');
-				// console.log(`You had ${correctGuesses} correct guesses and ${wrongGuesses} wrong guesses`);
 				showGameEl.classList.add('hide');
 				turnoutBox.classList.remove('hide');
 				if (correctGuesses <= 20) {
