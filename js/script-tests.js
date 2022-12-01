@@ -13,16 +13,33 @@
 *  All const and let for all game options
 */
 
-const randomStudents = students.map(student => student)						// A new undestructive list
-const studentNames = randomStudents.map(student=> student.name);			// A list of arrays
-const gameButtons = document.querySelectorAll('.game-options');				// All the game options
+
+// The game
+const showGameEl = document.querySelector('#game');							// Showing the game when user have chosen game options 10, 20 or all
 const image = document.querySelector('#studentImage');						// The student's image
 const infoBox = document.querySelector('#infoBox');							// True or false
 const turnoutBox = document.querySelector('#turnoutBox');					// Results!
-const showGameEl = document.querySelector('#game');							// Showing the game when user have chosen game options 10, 20 or all
+
+// Buttons
+const nbrOfGames = document.querySelector('#nbrOfGames');					// Number of games option buttons
 // const navigationButtonEl = document.querySelector('#navigationButton');  // Reset button
 const resetGameEl = document.querySelector('btnResetGame');					// Reset button alternative
 const optionButtons = document.querySelector('#optionButtons');				// Game option buttons
+const gameButtons = document.querySelectorAll('.game-options');				// Also game option buttons
+
+// Buttons to the DOM
+const nbrOfGames10 = document.querySelector('.nbrOfGames10').innerText += "10 students";
+const nbrOfGames20 = document.querySelector('.nbrOfGames20').innerText += "20 students";
+const nbrOfGamesAll = document.querySelector('.nbrOfGamesAll').innerText += "All students";
+const btnResetGame = document.querySelector('.btnResetGame').innerText = "Start over";
+
+// h1, h2 and footer to the DOM
+const h1 = document.querySelector('#h1').innerText = "Match the face with the name";
+const h2 = document.querySelector('#h2').innerText = "Select gamemode";
+const footer = document.querySelector('.footer').innerText = "eli-ennab";
+
+const randomStudents = students.map(student => student)						// A new undestructive list
+const studentNames = randomStudents.map(student=> student.name);			// A list of arrays
 
 let trueStudent;
 let falseStudents;
