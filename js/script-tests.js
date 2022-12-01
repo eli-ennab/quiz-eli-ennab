@@ -71,7 +71,7 @@ shuffleRandomStudent(randomStudents);										// Shuffle the new list
 
 // Listen for reset / "New game"
 
-const newGame = () => {
+// const newGame = () => {
 startNewGame.addEventListener('click', (e) => {
 
 	gameModeEl.classList.remove('hide');
@@ -89,9 +89,9 @@ startNewGame.addEventListener('click', (e) => {
     // // Enable submit-button again
     // btnGetLuckyEl.removeAttribute('disabled');
  });
-}
+// }
 
-const playGame = () => {
+// const playGame = () => {
 
 	/*
 	*  Game option: 10 students
@@ -328,6 +328,6 @@ const playGame = () => {
 		})
 	};
 
-};
+// };
 
-newGame();
+// newGame();
