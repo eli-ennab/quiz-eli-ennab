@@ -74,6 +74,7 @@ shuffleRandomStudent(randomStudents);										// Shuffle the new list
 // const newGame = () => {
 startNewGame.addEventListener('click', (e) => {
 
+	startNewGame.classList.add('hide')
 	gameModeEl.classList.remove('hide');
 	turnoutBox.classList.add('hide');
 
@@ -134,6 +135,7 @@ startNewGame.addEventListener('click', (e) => {
 		newStudents();
 
 		gameModeEl.classList.add('hide');
+		startNewGame.classList.add('hide');
 
 		let guesses = 10;
 		let correctGuesses = 0;
@@ -219,6 +221,9 @@ startNewGame.addEventListener('click', (e) => {
 
 	const startNewGame20 = () => {
 		newStudents();																			// Get image and name options
+		
+		gameModeEl.classList.add('hide');
+		startNewGame.classList.add('hide');
 
 			let guesses = 20;																	// Define amount of guesses
 			let correctGuesses = 0;																// Correct guesses
@@ -295,9 +300,12 @@ startNewGame.addEventListener('click', (e) => {
 	startNewGameAllStudents = (e) => {
 		newStudents();
 
-				let guesses = students.length;
-				let correctGuesses = 0;
-				let wrongGuesses = 0;
+		gameModeEl.classList.add('hide');
+		startNewGame.classList.add('hide');
+
+		let guesses = students.length;
+		let correctGuesses = 0;
+		let wrongGuesses = 0;
 
 		optionButtons.addEventListener('click', e => {
 			e.preventDefault;
