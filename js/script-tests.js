@@ -77,8 +77,8 @@ startNewGame.addEventListener('click', (e) => {
 	gameModeEl.classList.remove('hide');
 	turnoutBox.classList.add('hide');
 
-	// Start a new game
-	playGame();
+	// // Start a new game
+	// playGame();
 
     // // Reset number of guesses
     // updateGuesses(guesses);
@@ -163,6 +163,7 @@ startNewGame.addEventListener('click', (e) => {
 					if (guesses > 0) {
 					newStudents();
 				} else {
+					guesses = 10;
 					showGameEl.classList.add('hide');
 					turnoutBox.classList.remove('hide');
 					startNewGame.classList.remove('hide');
@@ -241,6 +242,7 @@ startNewGame.addEventListener('click', (e) => {
 					if (guesses > 0) {
 					newStudents();
 				} else {
+					guesses = 20;
 					showGameEl.classList.add('hide');
 					turnoutBox.classList.remove('hide');
 					startNewGame.classList.remove('hide');
@@ -315,6 +317,7 @@ startNewGame.addEventListener('click', (e) => {
 					if (guesses > 0) {
 					newStudents();
 				} else {
+					guesses = students.length;
 					showGameEl.classList.add('hide');
 					turnoutBox.classList.remove('hide');
 					startNewGame.classList.remove('hide');
