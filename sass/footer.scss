@@ -2,9 +2,11 @@
    _footer.scss
  
    Index
+   - Position and font styling for the footer
 
 \*-------------------------------------------*/
 
+// Position and font styling for the footer
 .footer {
    display: flex;
    align-items: flex-end;
@@ -13,5 +15,5 @@
    font-size: 1rem;
    color: #fff;
    font-family: "IBM Plex Mono",monospace;
-   letter-spacing: 1.2rem;
+   letter-spacing: 1rem;
 }

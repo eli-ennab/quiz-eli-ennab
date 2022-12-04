@@ -23,7 +23,6 @@ const infoBox = document.querySelector('#infoBox');							// True or false
 const turnoutBox = document.querySelector('#turnoutBox');					// Results!
 
 // Buttons
-// const nbrOfGames = document.querySelector('#nbrOfGames');					// Number of games option buttons
 const gameModeEl = document.querySelector('#gameMode');
 const startNewGame = document.querySelector('#btnstartNewGame');				// Start new game button
 const optionButtons = document.querySelector('#optionButtons');				// Game option buttons

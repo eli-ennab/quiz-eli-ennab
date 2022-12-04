@@ -18,39 +18,51 @@
   <link href="css/style.min.css" rel="stylesheet">
 </head>
 
-<body class="d-flex text-center">
-  <div class="container-fluid">
-<!-- Header -->
-    <header class="mb-auto">
-      <h1 id="h1"></h1>
-          <div id="navigationButton">
-            <button id="btnstartNewGame" type="submit" class="btnstartNewGame btn btn-secondary"></button>
-          </div>
-          <div id="gameMode" class="hide">
-            <h2 id="h2"></h2>
-            <div id="nbrOfGames" role="group" class="hide">
-              <button id="btn10" type="submit" class="nbrOfGames nbrOfGames10 btn btn-secondary"></button>
-              <button id="btn20" type="submit" class="nbrOfGames nbrOfGames20 btn btn-secondary"></button>
-              <button id="btnAll" type="submit" class="nbrOfGames nbrOfGamesAll btn btn-secondary"></button>
+<body class="text-center"> <!-- d-flex and text-center -->
+  <div class="container">
+    <div class="row">
+        
+      <!-- Header -->
+      <header class="">
+        <h1 id="h1"></h1>
+            <div id="navigationButton">
+              <button id="btnstartNewGame" type="submit" class="btnstartNewGame btn btn-secondary"></button>
             </div>
-          </div>
-          <div id="turnoutBox" class="hide"></div>
-    </header> 
-<!-- Main -->
-    <main id="game" class="mx-auto hide">
-          <div class="mx-auto">
-            <img src="" id="studentImage" class="image image-fluid"></img>
-          </div>
+            <div id="gameMode" class="hide">
+              <h2 id="h2"></h2>
+              <div id="nbrOfGames" class="hide"> <!--role="group"-->
+                <button id="btn10" type="submit" class="nbrOfGames10 btn btn-secondary"></button>
+                <button id="btn20" type="submit" class="nbrOfGames20 btn btn-secondary"></button>
+                <button id="btnAll" type="submit" class="nbrOfGamesAll btn btn-secondary"></button>
+              </div>
+            </div>
+            <div id="turnoutBox" class="hide"></div>
+      </header> 
 
-          <div id="infoBox"></div>
+      <div class="col-sm-12">
+        
+      <!-- Main -->
+      <main id="game" class="hide">
+        <div class="">
+          <img src="" id="studentImage" class="image image-fluid"></img>
+        </div>
 
-          <div id="optionButtons" class="btn-group" role="group">
-            <button id="option1" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
-            <button id="option2" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
-            <button id="option3" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
-            <button id="option4" type="submit" class="game-options btn btn-secondary btn-sm ml-2"></button>
-          </div>
-    </main>
+        <div id="infoBox"></div>
+
+        <div id="optionButtons" class="btn-group"> <!--role="group"-->
+          <div class="col-sm-6">
+          <button id="option1" type="submit" class="game-options btn btn-secondary"></button>
+          <button id="option2" type="submit" class="game-options btn btn-secondary"></button>
+        </div>
+        <div class="col-sm-6">
+          <button id="option3" type="submit" class="game-options btn btn-secondary"></button>
+          <button id="option4" type="submit" class="game-options btn btn-secondary"></button>
+        </div>
+        </div>
+      </main>
+
+      </div>
+    </div>
 <!-- Footer -->
     <footer>
       <div class="fixed-bottom">

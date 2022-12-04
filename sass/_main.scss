@@ -2,9 +2,22 @@
    _main.scss
  
    Index
+   - Turnout box (showing results of game)
+   - Font styling for h2, h3, h4
+   - Image in the game
+   - Infobox styling
+   - Hide elements
 
 \*-------------------------------------------*/
 
+#turnoutBox {
+    border: 1px dotted grey;
+    padding: 40px 20px;
+    margin: 40px 10px;
+    font-size: 1rem;
+ }
+
+// Font styling for h2, h3, h4
 h2,
 h3,
 h4 {
@@ -19,24 +32,21 @@ h4 {
     letter-spacing: .5rem;
 }
 
+// 'TRUE' response in game
 h4 
 .success {
     border: 1px dotted green;
     color: green;
 }
 
+// 'FALSE' response in game
 h4 
 .fail {
     border: 1px dotted rgb(255, 0, 0);
     color: red;
 }
 
-.mx-auto {
-    padding-top: 10px;
-    width: 80vw;
-    background-color: $secondary-color;
-}
-
+// Image in the game
 .image {
     max-width: 100%;
     height: auto;
@@ -44,10 +54,12 @@ h4
     border: 1px dotted white;
 }
 
+// Infobox styling (shows the 'TRUE' or 'FALSE' response)
 #infoBox {
     padding: 10px;
 }
 
+// Hide elements
 .hide {
     display: none;
 }
