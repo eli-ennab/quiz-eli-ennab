@@ -7,7 +7,7 @@
 
 // All buttons
 .btn {
-    border: 1px dotted white;
+    border: 1px dotted $primary-color;
     font-size: .8rem;
     font-family: $major-mono;
     font-weight: lighter;
@@ -17,7 +17,7 @@
 .btnstartNewGame {
     font-family: $ibm-mono;
     font-size: 1.5rem;
-    border: 3px dotted white;
+    border: 3px dotted $primary-color;
     margin: 20px;
     padding: 10px;
     background-color: goldenrod;
@@ -31,8 +31,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000;
-    color: #fff;
+    background-color: $secondary-color;
+    color: $primary-color;
     font-family: "IBM Plex Mono",monospace;
     height: 100px;
     width: 100%;
