@@ -81,6 +81,25 @@ startNewGame.addEventListener('click', (e) => {
 	startNewGame.classList.remove('hide');
  }
 
+ /*
+ * New student
+ */
+
+ function newStudents() {
+	trueStudent = allTrueStudents.shift();												// A new true student
+	const image = document.querySelector('#studentImage');								// The true students image
+	image.src = `${trueStudent.image}`;
+	falseStudents = studentNames.filter(name => name !== trueStudent.name);				// Filter to get all false students
+	shuffleRandomStudent(falseStudents);												// Shuffle all false students
+	const falseStudentName = falseStudents.slice(0, 3);									// Get three false student names
+	const options = [...falseStudentName, trueStudent.name];							// Create a new array with four options (one true and three false)
+	shuffleRandomStudent(options);														// Then shuffle the current options
+	const gameButtons = document.querySelectorAll('.game-options');						// Get the options out to the DOM, randomized
+	for (let i=0; i < gameButtons.length; i++) {
+		gameButtons[i].innerHTML = options[i];
+	}
+};
+
 	/*
 	*  Game option: 10 students
 	*/
@@ -89,21 +108,6 @@ startNewGame.addEventListener('click', (e) => {
 	allTrueStudents = randomStudents
 		.map(student => student)
 		.slice(0, 10);
-
-		function newStudents() {
-			trueStudent = allTrueStudents.shift();												// A new true student
-			const image = document.querySelector('#studentImage');								// The true students image
-			image.src = `${trueStudent.image}`;
-			falseStudents = studentNames.filter(name => name !== trueStudent.name);				// Filter to get all false students
-			shuffleRandomStudent(falseStudents);												// Shuffle all false students
-			const falseStudentName = falseStudents.slice(0, 3);									// Get three false student names
-			const options = [...falseStudentName, trueStudent.name];							// Create a new array with four options (one true and three false)
-			shuffleRandomStudent(options);														// Then shuffle the current options
-			const gameButtons = document.querySelectorAll('.game-options');						// Get the options out to the DOM, randomized
-			for (let i=0; i < gameButtons.length; i++) {
-				gameButtons[i].innerHTML = options[i];
-			}
-		};
 
 	btn10.addEventListener('click', e => {
 		turnoutBox.classList.add('hide');
@@ -160,21 +164,6 @@ startNewGame.addEventListener('click', (e) => {
 		.map(student => student)
 		.slice(0, 20);
 
-		function newStudents() {
-			trueStudent = allTrueStudents.shift();												// A new true student
-			const image = document.querySelector('#studentImage');								// The true students image
-			image.src = `${trueStudent.image}`;
-			falseStudents = studentNames.filter(name => name !== trueStudent.name);				// Filter to get all false students
-			shuffleRandomStudent(falseStudents);												// Shuffle all false students
-			const falseStudentName = falseStudents.slice(0, 3);									// Get three false student names
-			const options = [...falseStudentName, trueStudent.name];							// Create a new array with four options (one true and three false)
-			shuffleRandomStudent(options);														// Then shuffle the current options
-			const gameButtons = document.querySelectorAll('.game-options');						// Get the options out to the DOM, randomized
-			for (let i=0; i < gameButtons.length; i++) {
-				gameButtons[i].innerHTML = options[i];
-			}
-		};
-
 	btn20.addEventListener('click', e => {
 		turnoutBox.classList.add('hide');
 		showGameEl.classList.remove('hide');
@@ -225,21 +214,6 @@ startNewGame.addEventListener('click', (e) => {
 
 	// All true students
 	allTrueStudents = randomStudents.map(student => student)
-
-	function newStudents() {
-		trueStudent = allTrueStudents.shift();												// A new true student
-		const image = document.querySelector('#studentImage');								// The true students image
-		image.src = `${trueStudent.image}`;
-		falseStudents = studentNames.filter(name => name !== trueStudent.name);				// Filter to get all false students
-		shuffleRandomStudent(falseStudents);												// Shuffle all false students
-		const falseStudentName = falseStudents.slice(0, 3);									// Get three false student names
-		const options = [...falseStudentName, trueStudent.name];							// Create a new array with four options (one true and three false)
-		shuffleRandomStudent(options);														// Then shuffle the current options
-		const gameButtons = document.querySelectorAll('.game-options');						// Get the options out to the DOM, randomized
-		for (let i=0; i < gameButtons.length; i++) {
-			gameButtons[i].innerHTML = options[i];
-		}
-	};
 
 	btnAll.addEventListener('click', e => {
 		const showGameEl = document.querySelector('#game');
