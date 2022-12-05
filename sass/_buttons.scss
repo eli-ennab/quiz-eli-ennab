@@ -5,6 +5,7 @@
 
 \*-------------------------------------------*/
 
+// All buttons
 .btn {
     border: 1px dotted white;
     font-size: .8rem;
@@ -42,14 +43,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-// Medium and large screen
-@media screen and (min-width: 767px) {
-    
-}
-
-// Large screen
-@media screen and (min-width: 1023px) {
-
 }

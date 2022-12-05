@@ -1,8 +1,8 @@
 /*-------------------------------------------*\
    JS Script Index
  
-   - All const and let for all game options
-   - The (Fisher-Yates) Shuffle
+   - Document query selector of all elements and into DOM
+   - Copy of list and the (Fisher-Yates) shuffle
    - Start new game
    - Play game
 		- Game option: 10 students
@@ -12,21 +12,20 @@
 \*-------------------------------------------*/
 
 /*
-*  All const and let for all game options
+*  Document query selector of all elements and into DOM
 */
-
 
 // The game
 const showGameEl = document.querySelector('#game');							// Showing the game when user have chosen game options 10, 20 or all
 const image = document.querySelector('#studentImage');						// The student's image
-const infoBox = document.querySelector('#infoBox');							// True or false
-const turnoutBox = document.querySelector('#turnoutBox');					// Results!
+const infoBox = document.querySelector('#infoBox');							// Response in game, true or false
+const turnoutBox = document.querySelector('#turnoutBox');					// Results in the end of the game
 
 // Buttons
-const gameModeEl = document.querySelector('#gameMode');
-const startNewGame = document.querySelector('#btnstartNewGame');				// Start new game button
-const optionButtons = document.querySelector('#optionButtons');				// Game option buttons
-const gameButtons = document.querySelectorAll('.game-options');				// Also game option buttons
+const startNewGame = document.querySelector('#btnstartNewGame');			// Start new game button
+const gameModeEl = document.querySelector('#gameMode');						// Game option buttons for hiding elements
+const optionButtons = document.querySelector('#optionButtons');				// Game option buttons for click event
+const gameButtons = document.querySelectorAll('.game-options');				// The student name option buttons
 
 // Buttons to the DOM
 const nbrOfGames10 = document.querySelector('.nbrOfGames10').innerText += "10 students";
@@ -38,6 +37,10 @@ const btnstartNewGame = document.querySelector('.btnstartNewGame').innerText = "
 const h1 = document.querySelector('#h1').innerText = "Match the face with the name";
 const h2 = document.querySelector('#h2').innerText = "Select gamemode";
 
+/*
+*  Copy of list and the (Fisher-Yates) shuffle
+*/
+
 const randomStudents = students.map(student => student)						// A new undestructive list
 const studentNames = randomStudents.map(student=> student.name);			// A list of arrays
 
@@ -45,10 +48,6 @@ let trueStudent;
 let falseStudents;
 let allTrueStudents;
 let falseStudent;
-
-/*
-*  The (Fisher-Yates) Shuffle
-*/
 
 // Shuffle the students
 const shuffleRandomStudent = (students) => {
@@ -62,12 +61,11 @@ const shuffleRandomStudent = (students) => {
 
 shuffleRandomStudent(randomStudents);										// Shuffle the new list
 
-
 /*
 * Start new game
 */
 
-// Listen for reset / "New game"
+// Listen for 'Start new game'
 
 // const newGame = () => {
 startNewGame.addEventListener('click', (e) => {
