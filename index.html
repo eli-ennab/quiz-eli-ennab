@@ -18,7 +18,7 @@
   <link href="css/style.min.css" rel="stylesheet">
 </head>
 
-<body class="text-center"> <!-- d-flex and text-center -->
+<body class="text-center">
   <div class="container">
     <div class="row">
         
@@ -38,44 +38,35 @@
             </div>
             <div id="turnoutBox" class="hide"></div>
       </header> 
-
-      <div class="col-sm-12">
         
       <!-- Main -->
-      <main id="game" class="hide">
-        <div class="">
-          <img src="" id="studentImage" class="image image-fluid"></img>
-        </div>
+        <main id="game" class="hide">
+          <div class="row">
+            <div class="">
+              <img src="" id="studentImage" class="image image-fluid" alt="A student in FED22">
+            </div>
 
-        <div id="infoBox"></div>
+            <div id="infoBox"></div>
 
-        <div id="optionButtons" class="btn-group"> <!--role="group"-->
-          <div class="col-sm-6">
-          <button id="option1" type="submit" class="game-options btn btn-secondary"></button>
-          <button id="option2" type="submit" class="game-options btn btn-secondary"></button>
+            <div id="optionButtons" class="btn-group"> <!--role="group"-->
+              <div class="col-6">
+              <button id="option1" type="submit" class="game-options btn btn-secondary"></button>
+              <button id="option2" type="submit" class="game-options btn btn-secondary"></button>
+            </div>
+            <div class="col-6">
+              <button id="option3" type="submit" class="game-options btn btn-secondary"></button>
+              <button id="option4" type="submit" class="game-options btn btn-secondary"></button>
+            </div>
+            </div>
         </div>
-        <div class="col-sm-6">
-          <button id="option3" type="submit" class="game-options btn btn-secondary"></button>
-          <button id="option4" type="submit" class="game-options btn btn-secondary"></button>
-        </div>
-        </div>
-      </main>
+        </main>
 
       </div>
     </div>
-<!-- Footer -->
-    <footer>
-      <div class="fixed-bottom">
-        <h5 class="footer"></h5>
-      </div>
-    </footer>
-  </div>
 </body>
 
 	<!-- Script -->
   <script src="/js/students.js"></script>
-  <script src="/js/script-tests.js"></script>
-  <!-- <script src="/js/script.js"></script> -->
-
+  <script src="/js/script.js"></script>
 
 </html>
