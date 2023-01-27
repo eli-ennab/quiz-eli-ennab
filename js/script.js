@@ -105,9 +105,7 @@ startNewGame.addEventListener('click', (e) => {
 	*/
 
 	// Slice 10 true students
-	allTrueStudents = randomStudents
-		.map(student => student)
-		.slice(0, 10);
+	allTrueStudents = [...randomStudents].slice(0, 10);
 
 	btn10.addEventListener('click', e => {
 		turnoutBox.classList.add('hide');
@@ -160,9 +158,7 @@ startNewGame.addEventListener('click', (e) => {
 	*/
 
 	// Slice 20 true students
-	allTrueStudents = randomStudents
-		.map(student => student)
-		.slice(0, 20);
+	allTrueStudents = [...randomStudents].slice(0, 20);
 
 	btn20.addEventListener('click', e => {
 		turnoutBox.classList.add('hide');
@@ -213,7 +209,7 @@ startNewGame.addEventListener('click', (e) => {
 	*/
 
 	// All true students
-	allTrueStudents = randomStudents.map(student => student)
+	allTrueStudents = [...randomStudents];
 
 	btnAll.addEventListener('click', e => {
 		const showGameEl = document.querySelector('#game');
